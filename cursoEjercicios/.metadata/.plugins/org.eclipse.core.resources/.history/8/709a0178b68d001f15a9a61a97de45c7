@@ -1,0 +1,25 @@
+package mx.davdev.pruebaAnnotations;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+
+@Configuration
+@ComponentScan("mx.davdev.pruebaAnnotations")
+@PropertySource(value = {"claspath:foo.propiedades"})
+public class EmpleadoConfig {
+	
+	// definir el bean para InformeFinacieronDtoCompras
+	@Bean
+	public CreacionInformeFinanciero InfoFinanDtoCompras() { // sera el id del bean inyectado
+		return new InfoFinanDtoCompras();
+	}
+	
+	// definir el bena para DirectorFinanciero e inyectar referencias
+	@Bean
+	public Empleados directorFinanciero() {
+		return new DirectorFinanciero(InfoFinanDtoCompras());
+		
+	}
+}

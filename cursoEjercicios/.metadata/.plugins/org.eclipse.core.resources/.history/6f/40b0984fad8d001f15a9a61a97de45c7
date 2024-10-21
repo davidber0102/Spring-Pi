@@ -1,0 +1,24 @@
+package mx.davdev.pruebaAnnotations;
+
+public class DirectorFinanciero implements Empleados {
+
+	
+	public DirectorFinanciero(CreacionInformeFinanciero nuevoFinanciero) {
+		this.nuevoFinanciero = nuevoFinanciero;
+	}
+
+	@Override
+	public String getTareas() {
+		// TODO Auto-generated method stub
+		return "Gestion y direcion de las operaciones financieras de la empresa";
+	}
+
+	@Override
+	public String getInforme() {
+		// TODO Auto-generated method stub
+		return nuevoFinanciero.getInformeFinanciero();
+	}
+	
+	private CreacionInformeFinanciero nuevoFinanciero;
+
+}

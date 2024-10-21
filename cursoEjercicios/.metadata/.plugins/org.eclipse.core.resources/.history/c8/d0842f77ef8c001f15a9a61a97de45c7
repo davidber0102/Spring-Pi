@@ -1,0 +1,5 @@
+package mx.davdev.pruebaAnnotations;
+
+public interface Empleados {
+
+}

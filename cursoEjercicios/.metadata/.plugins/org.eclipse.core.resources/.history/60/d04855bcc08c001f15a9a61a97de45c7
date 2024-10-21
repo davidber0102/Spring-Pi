@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:jee="http://www.springframework.org/schema/jee"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+	<!-- Creacion de dependencia  -->
+	<bean id="miInforme" class="mx.davdev.IoC.Informe">
+	</bean>
+		<bean id="miEmpleado" class="mx.davdev.IoC.JefeEmpleado">  
+	</bean>
+	<bean id="miDirectorEmpleado" class="mx.davdev.IoC.JefeEmpleado">  
+		<constructor-arg ref="miInforme"></constructor-arg>
+		<property name="email" value="direccion@ssedo.com"></property>
+		<property name="nombreEmpresa" value="Desarrollo de Sistemas "></property>
+	</bean>
+	<bean id="miSecretarioEmpleado" class="mx.davdev.IoC.SecretarioEmpleado">
+		<property name="informeNuevo" ref="miInforme"></property>
+		<property name="email" value="secretaria@ssedo.com"></property>
+		<property name="nombreEmpresa" value="Desarrollo de Sistemas "></property>
+	</bean>
+
+</beans>
+
+
+

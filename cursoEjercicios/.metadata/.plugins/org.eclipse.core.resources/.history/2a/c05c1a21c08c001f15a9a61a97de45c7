@@ -1,0 +1,24 @@
+package mx.davdev.IoC;
+
+public class DirectorEmpleado implements Empleados {
+	// creacion de campo tipo creacionInforme(interfaz)
+	private CreacionInformes informeNuevo;
+	
+	// Creacion de constructor que inyecta la dependencia 
+	public DirectorEmpleado( CreacionInformes informe) {
+		this.informeNuevo = informe;
+	}
+
+	@Override
+	public String getTareas() {
+		// TODO Auto-generated method stub
+		return "Gestion la plantilla de la empresa";
+	}
+
+	@Override
+	public String getInformes() {
+		// TODO Auto-generated method stub
+		return "Informe creado por el Director: " + informeNuevo.getInformes();
+	}
+
+}

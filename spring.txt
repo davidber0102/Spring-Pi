@@ -1,0 +1,237 @@
+/*
+*@autorh: David Bernal Diaz
+*@Tema: Spring con el curso de Píldoras 
+*
+*/
+	temario
+¿Qué es spring?
+Preparación Eclipse para Spring
+Inversión de control y Configuración XML
+Inyección de dependencias
+Alcance y ciclo de vida de los beans
+Configuración con Java annotations
+Configuración código java
+Aplicaciones Web con Spring MVC
+
+¿Qué es Spring?
+	es un framework mas popular para crear aplicaciones Java
+		¿Qué es un framework? es un entorno e trabajo compuesto por reglas y herramientas que facilitan enormemente el desarrollo de aplicaciones
+
+	Spring es la alternativa al desarrollo de aplicaciones java jee(java enterprhise)
+		MAS SIMLE Y LIGERO
+	2003 SPRING ROD JOHNSON
+		SE CREO PARA SOLVENTAR LAS DIFUCLTADES AL MOMENTO DE DESARROLLAR APLICACIONES JEE
+
+¿por que se utiliza Spring?
+
+***** VIDEO 3 CORE SPRING
+Ventajas de Spring 
+
+	Inyección de dependencias (favorece el "loose  coupling")
+	Desarrollo con POJOs(Plain Old Java Objects)
+	Minimiza el código repetitivo (boilerplate code)
+	Simplica el acceso a datos
+	Programación Orientada a Aspectos(AOP)
+	
+Estructura del Core (núcleo) de Spring
+	Se divide en cinco grandes aspectos
+
+	Infraestructura: Progrmacion Orientada a Aspectostransacciones, LOgesos, Seguridad
+
+	Acceso a datos: JDBC TRANSACTIONS (OXM, JMS ) ORM(Object Relational Mappingc acceder a datos con el enfoque de progrmacion orientada a objetos )
+		jdbc con menos codigo
+		las transacciones ayudar a la reducion de codigo en llamadas a clases
+
+	Contenedor central
+		Beans
+		SpEL: Spring Expresión Languaje potente lenjuage de xpresionas, manipular objetos en ejecucion
+		Core
+		Context: como almacén de los beans en memoria
+
+	Creador de Beans
+	Propiedades y dependencias
+
+	Web/MVC: acceso web remoto, permitri la integración de JSF y Struts
+		Servlet
+		Portlet
+		WebSocket
+		WEb
+
+	Pruebas: Test, permitirá la creación de pruebasn em modo desarrolo
+		Unit
+		Mock: MockObjects
+		Integraction
+
+Video 4 Instalación Tomcat y entorno de desarrollo
+	requisitos necesario
+		java jre superior ala versión 8
+		JDK(Java Development Kit)
+		Servidor Java
+			-- Usaremos Tomcat
+		IDE Entorno de Desarrollo Integrado en ingles
+			.. Usaremos Eclipse
+
+Video 5 Descarga e Instalación  Librerias Spring jar file
+	Descarga de Spring JAR Files
+	Importación de librerías a Proyecto en Eclipse
+
+	preparación entorno desarrollo
+
+Video 7 Inversión fo Control --- Martin Fowler
+	Principio de HolyWood
+	una de las principales características e Spring 
+
+Invierte el flujo de control del programa, extgernalizando(agente externo: framework) la construcción y manejo de objetos
+
+	VENTAJAS
+		Proporciona modularidad
+		Permite ampliar la funcionalidad de nuestras aplicaciones sin modificar las clases
+		Evita la dependencia entre clases
+		Flexibiliza nuestras aplicaciones haciéndolas mas configurables
+
+Video 7 Inversión fo Control
+
+	Ejercicio sencillo primera parte
+
+OBJECTO FACTORY	
+
+Video 8 Inversión fo Control 
+	EJERCICIO SENCILLO 2DA PARTA
+
+Video 9 Inyección de Dependencias
+
+	definición de inyección de dependencias: el cliente delega con llamadas a otro objeto la responsabilidad de proporcionar sus dependencias
+	defincion de Wikipedia: Patron de diseño orientado a objetos en el que suministra objetos a una clase en lugar de ser la propia clase la que cree dichos objs
+
+Formas de crear inyección de Dependencias
+1.- Mediante un constructor
+2.- mediante un setter
+
+Pasos a seguir utilizando un constructor
+1 crear la clase e interfaz de la dependencia(Informes)
+2 creación de constructor de la clase para la inyección de la dependencia
+3 Configurar la inyección de dependencias en archivo XML(applicationcontex.xml)
+
+Video 10 Inyección de Dependencias
+	Inyección de Campos 
+		Desde campos de propiedades
+		mediante el archivo XML con beans
+
+
+Video 13 Inyección de Dependencias
+	Patrones de Diseño Singleton y Prototype en Spring
+
+Singleton ¿ Que es? 
+	Patron de diseño que tiene como objetivo asegurar que solo hay una instancia u objeto por clase y un punto de acceso global a ella
+
+¿ Por que es necesario?
+	En determinados escenarios que surgen a la hora e programar, debemos asegurarnos de que las clases controlan y gestionan el acceso a un único recurso
+	(p ejemplo un fichero abiero). Es frecuente necesitar un punto de acceso único a algún ecurso el sistema compartido y un único objeto que centralice la 
+	administración del recuerso
+	En otros escenarios la necesidad es que diferentes objetos de la aplicación puedan acceder a un tipo de dato en concreto
+
+Ventajas
+	Control estricto de como se acceden a las instancias
+	Espacio de nombres reducidos (mayor claridad de código)
+	Mejor desempeño de la herencia
+
+Spring utiliza Singleton por defecto
+
+***************Prototype***********************
+¿Qué es ?
+	Patron de diseño que tiene como objetivo la creación de varios objetos a partir de un modelo o prototipo. esto lo hace mediante clonación de objetos
+	o instancias creadas previamente. Siempre es mas optimo ( recursos) clonar un objeto que crear uno nuevo. El objeto clonado tendrá sus propios valores desde
+	setters
+
+¿ Por que es necesario esto?
+	En determinados escenarios que surgen a al hora de programar se necesitan varios objetos con atributos repetidos(comunes)
+
+Ventajas
+	Una aplicación puede crear y eliminar objetos en tiempo de ejecución( esto no lo permiten otros patrones de diseño)
+	Permiten crear nuevo objetos variando los ya existentes con el consiguiente ahorro de tiempo y recursos
+	Clonar siempre es mas rápido que crear
+Spring utiliza Singleton por defecto, pero sin problema puede utilizas el patron de prototipo también
+
+
+Video 14 Ciclo de Vida del vean
+	Ejecutar tareas a realizar antes de creación de bean
+	Ejecutar tareas a realizar después de creación de vean
+
+Ciclo de vida
+	Contenedor Spring Inicidiado
+	Instaciacion de Bean
+	Inyección de dependencias
+	Procesado del Bean
+		Método init
+			Dependencias de otros beans
+			Activación de servicios
+	Bean listo para su uso
+	Contendor Spring apagado
+		Método destroy
+			Liberar recursos
+			Cerrar conexiones de BBDD
+			Cerrar Socket y otros procedimientos
+
+
+
+Vídeo 15 Java annotations. 
+
+	¿Qué son las Jva Annotations ?
+		son anotación o etiquetas que se añaden a nuestras clases, métodos, campos, variables etc en un programa java
+	¿Para que sirven ?
+		añadir metadatos a nuestros programas(clases) de Java 
+		Que son los metadatos
+			conjunto de datos que describen el contenido y/o propósito de un objeto
+Poder describir la naturaleza de un objeto (metadatos) con annotations nos permite utilizarlas como sustituto de los archivos XML
+Las annotations son procesadas en tiempo de compilación o también en tiempo de ejecución
+
+Como funcionan las annotations en Spring
+	Spring escanea el código de todas nuestras clases en busca de annotations Segundo plano... recursividad
+		- hay que preparar el XML para que Spring escanee nuestro código
+	
+	Cuando encuentra una nnotation, registra el vean de forma automática en el contenedor
+		NO HAY QUE HACER NADA MAS
+Ventajas java annotations Spring
+	Mayor facilidad a la hora de configurar los beans
+	Simplifica enormemete el código de configuración XML
+
+Pasos a seguir para utilizar java annotations
+	1 Preparar el XML para que Spring escanee nuestro código(clases)
+	2 Agregar annotations a nuestras clases de Java
+	3 Pedir el vean al contenedor
+
+	
+Vídeo 17  Java annotations III. Autowired. 
+	¿para que sirve ?
+ Inyección de depende
+
+inyección con constructor y annotations
+	1 crear clase + interfaz a inyectar(dependencia)
+	2 crear constructor para inyección en clase que lo solicite
+	3 Configurar la dependencia con @Autowired
+
+
+Inyección de dependencias con setter, con método "normal"  y con campo de clase
+
+Video 20 @Qualifier
+	Java annotations @Qualifier
+		Especificar vean id cuando sea necesario
+
+. @Scope. Vídeo 21
+	Java Annotations
+		Singleton y prototype con annotations
+
+@PostConstruct y @PreDestroy. Vídeo 22
+	Ejecucuin de código antes de creación del vean y después de creación delbean
+
+@Configuration. Vídeo 23
+como configurar Spring con código Jav prescindiendo del XML propiedades
+
+@Bean. Vídeo 24
+	Como pedir beans al contenedor de Spring con código Java prescindiendo del XML propiedades
+
+@PropertySource y @Value. Vídeo 25
+	@PropertySource permite especificar la ruta al archivo externo de propiedades
+	@Value permite inyectar el valor de las propiedades desde archivo externo
+
+Modelo Vista Controlador. Vídeo 26

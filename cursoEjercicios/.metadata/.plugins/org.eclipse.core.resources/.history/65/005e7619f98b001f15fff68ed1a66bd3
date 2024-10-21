@@ -1,0 +1,17 @@
+package mx.davdev.IoC;
+
+public class UsoEmpleados {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		// Creacion de Objetos tipo Empleado
+		Empleados empleado1 = new JefeEmpleado();
+		
+		
+		// Uso de los Objetos creados
+		System.out.println(empleado1.getTareas());
+
+	}
+
+}

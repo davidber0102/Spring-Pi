@@ -1,0 +1,49 @@
+package mx.davdev.IoC;
+
+import org.springframework.context.support.*;
+
+public class UsoEmpleados {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		/*
+		// Creacion de Objetos tipo Empleado
+		Empleados empleado1 = new JefeEmpleado();
+		
+		Empleados empleado2 = new SecretarioEmpleado();
+		
+		Empleados empleado3 = new DirectorEmpleado();
+		
+		
+		// Uso de los Objetos creados
+		System.out.println(empleado1.getTareas());
+		System.out.println(empleado2.getTareas());
+		System.out.println(empleado3.getTareas());*/
+		
+		// nuevo codigo utilizando spring
+		// crear un contexto para cargar archivo XML
+		
+		ClassPathXmlApplicationContext contexto = new ClassPathXmlApplicationContext("applicationContext.xml"); 
+		
+		// Pedir Bean
+		Empleados Juan = contexto.getBean("miEmpleado", Empleados.class);
+		SecretarioEmpleado Maria = contexto.getBean("miSecretarioEmpleado", SecretarioEmpleado.class);
+		SecretarioEmpleado Pablo = contexto.getBean("miSecretarioEmpleado", SecretarioEmpleado.class);
+		
+		// utilizar el Bean
+		System.out.println("Sus funciones en General son: " +Juan.getTareas());
+		System.out.println("Y sus actividades esta el : " + Juan.getInformes());
+		
+		System.out.println("Sus funciones en General son: " + Maria.getTareas());
+		System.out.println("Y sus actividades esta el : " + Maria.getInformes());
+		System.out.println("Email: " + Maria.getEmail());
+		System.out.println("Nombre de la empresa: " + Maria.getNombreEmpresa());
+		
+		System.out.println("Email de Pablo: " + Pablo.getEmail());
+		System.out.println("Nombre de la empresa: " + Pablo.getNombreEmpresa());
+		
+		// cerrar el archivo XML
+		contexto.close();
+	}
+
+}

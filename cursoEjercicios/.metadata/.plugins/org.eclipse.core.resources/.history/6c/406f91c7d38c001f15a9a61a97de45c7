@@ -1,0 +1,25 @@
+package mx.davdev.IoC;
+
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class UsoDemoSingletonPrototype {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+	// crear un contexto para cargar archivo de configuracion- XML		
+		ClassPathXmlApplicationContext contexto = new ClassPathXmlApplicationContext("applicationContext2.xml");
+		
+		// Peticion de bens al contenedor Spring 
+			SecretarioEmpleado Maria = contexto.getBean("miSecretarioEmpleado", SecretarioEmpleado.class);
+			SecretarioEmpleado Pedro = contexto.getBean("miSecretarioEmpleado", SecretarioEmpleado.class);
+
+			
+			// imrpimir el espacion en memoria
+			System.out.println(Maria);
+			System.out.println(Pedro);
+			
+			if(Maria == Pedro ) System.out.println("Apuntan al mismo objeto creado en meoria");
+			
+	}
+
+}
